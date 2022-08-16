@@ -68,23 +68,27 @@ class LinkedList:
     # Delete operations begin
     # ================================
 
-    def deleteHead(self):
+    def deleteHead(self) -> int:
         if not self.head:
             return
+        val = self.head.data
         self.head = self.head.next
         self.length -= 1
+        return val
 
     def pop(self):
         if self.length == 0:
             return
         elif self.length == 1:
-            self.deleteHead()
+            return self.deleteHead()
         else:
             curr = self.head
             while curr.next.next:
                 curr = curr.next
+            val = curr.data
             curr.next = None
             self.length -= 1
+            return curr.data
 
     # Delete operations end
     # ================================
